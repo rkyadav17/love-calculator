@@ -36,7 +36,4 @@ Contributions are welcome! If you have any ideas, suggestions, or improvements, 
 License
 This project is licensed under the MIT License.
 
-Acknowledgements
-Heart image by Freepik from Flaticon
-Sprinkle animation inspiration from CodePen
-CSS animation tutorials from CSS-Tricks
+
