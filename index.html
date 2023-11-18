@@ -1,26 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Love Calculator</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: url('backbg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header {
+            background-color: #af7c7c;
+            padding: 1rem;
+            color: rgba(0, 0, 0, 0.817);
+            font-size: 24px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        main {
+            padding: 2rem;
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 600px; /* Adjust max-width as needed */
+            margin: auto;
+            background-color: rgba(232, 149, 149, 0.8); /* Adjust background color and opacity */
+            border-radius: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        input {
+            width: calc(100% - 1rem); /* Adjust the width for the padding */
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 8px; /* Adjust the border-radius for a more cylindrical shape */
+            outline: none;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: rgb(9, 0, 0);
+            padding: 0.5rem 1rem;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px; /* Adjust the border-radius for a more cylindrical shape */
+            outline: none;
+        }
+
+        #heart {
+            width: 30px;
+            height: auto;
+            margin: 0 10px;
+        }
+
+        #result {
+            font-size: 24px;
+            margin-top: 1rem;
+        }
+
+        #loveGif {
+            display: none; /* Initially hide the GIF */
+            width: 100px; /* Adjust the width as needed */
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>Love Calculator</h1>
-    <div class="container">
+
+    <header>
+        <div>꧁•⊹٭𝙻𝚘𝚟𝚎 𝙲𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚘𝚛٭⊹•꧂</div>
+    </header>
+
+    <main>
         <label for="name1">Your Name:</label>
-        <input type="text" id="name1" placeholder="Enter Your Name">
+        <input type="text" id="name1" placeholder="Enter your name">
 
-        <div class="heart-container">
-            <img src="heart.gif" alt="Heart">
-        </div>
+        <img src="heart.gif" alt="heart" id="heart">
 
-        <label for="name2">Your Crush Name:</label>
-        <input type="text" id="name2" placeholder="Enter Your Crush Name">
+        <label for="name2">Partner's Name:</label>
+        <input type="text" id="name2" placeholder="Enter partner's name">
 
-        <button id="calculateButton">Calculate</button>
+        <button onclick="calculateLove()">Calculate Love</button>
+
         <div id="result"></div>
-    </div>
 
-    <script src="script.js"></script>
+        <img id="loveGif" src="giph.gif" alt="love gif">
+    </main>
+
+    <script>
+        function calculateLove() {
+            const name1 = document.getElementById('name1').value.toLowerCase();
+            const name2 = document.getElementById('name2').value.toLowerCase();
+
+            // Show the love GIF
+            document.getElementById('loveGif').style.display = 'inline';
+
+            const lovePercentage = calculateLovePercentage(name1, name2);
+
+            document.getElementById('result').innerHTML = `Your love percentage with ${name2} is: ${lovePercentage}%`;
+
+            // Hide the love GIF after 3 seconds
+            setTimeout(function() {
+                document.getElementById('loveGif').style.display = 'none';
+            }, 30000);
+        }
+
+        function calculateLovePercentage(name1, name2) {
+            const combinedNames = name1 + 'loves' + name2;
+            const hash = hashString(combinedNames);
+
+            // Map the hash code to a percentage between 50% and 100%
+            const lovePercentage = ((hash % 51) + 50);
+
+            return lovePercentage;
+        }
+
+        function hashString(s) {
+            let hash = 0;
+            for (let i = 0; i < s.length; i++) {
+                hash = (hash << 5) - hash + s.charCodeAt(i);
+            }
+            return hash;
+        }
+    </script>
+
 </body>
 </html>
