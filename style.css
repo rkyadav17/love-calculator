@@ -1,10 +1,9 @@
-/* Add this code to your existing CSS file */
-
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
+    background-color: #f4f4f4; /* Set your desired background color */
 }
 
 h1 {
@@ -15,6 +14,10 @@ h1 {
     width: 80%;
     max-width: 600px;
     margin: 20px auto;
+    background-color: #fff; /* Set your desired background color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
 }
 
 label {
@@ -26,11 +29,13 @@ input {
     width: 100%;
     padding: 8px;
     margin-bottom: 16px;
+    box-sizing: border-box;
 }
 
 .heart-container {
     position: relative;
     width: 100%;
+    margin-bottom: 16px;
 }
 
 .heart-container img {
@@ -54,12 +59,5 @@ button {
 @media screen and (max-width: 600px) {
     .container {
         width: 90%;
-    }
-}
-
-/* Media query for screens between 600px and 900px (tablets) */
-@media screen and (min-width: 601px) and (max-width: 900px) {
-    .container {
-        width: 70%;
     }
 }
